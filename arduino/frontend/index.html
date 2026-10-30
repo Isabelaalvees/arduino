@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estação Meteorológica IoT</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <div class="brand">
+                <h1>Sistema de Medição de Água e Pressão Atmosférica</h1>
+                <p>Arduino • Sistema de Coleta em Tempo Real</p>
+            </div>
+
+            <div class="status-badge">
+                <span id="status-dot" class="dot"></span>
+                <span id="status-text">Conectando...</span>
+            </div>
+        </header>
+
+        <div class="grid-cards">
+
+            <!-- Card de nível de água -->
+            <div class="card card-water">
+                <div class="card-title">Nível de Água</div>
+
+                <div class="metric-value" style="color: #38bdf8;">
+                    <span id="water-val">--</span>
+                    <span class="metric-unit">cm</span>
+                </div>
+
+                <div class="sub-text">
+                    <span>💧 Medição:</span>
+                    <strong id="water-status" style="color: #38bdf8;">
+                        Aguardando dados...
+                    </strong>
+                </div>
+            </div>
+
+            <!-- Card de pressão -->
+            <div class="card card-pressure">
+                <div class="card-title">Pressão Atmosférica</div>
+
+                <div class="metric-value" style="color: #a78bfa;">
+                    <span id="pressure-val">--</span>
+                    <span class="metric-unit">hPa</span>
+                </div>
+
+                <div class="sub-text">
+                    <span>⏲️ Tendência:</span>
+                    <strong id="pressure-status" style="color: #a78bfa;">
+                        Aguardando dados...
+                    </strong>
+                </div>
+            </div>
+
+            <!-- Card de temperatura -->
+            <div class="card card-temperature">
+                <div class="card-title">Temperatura</div>
+
+                <div class="metric-value" style="color: #fbbf24;">
+                    <span id="temperature-val">--</span>
+                    <span class="metric-unit">°C</span>
+                </div>
+
+                <div class="sub-text">
+                    <span>🌡️ Medição:</span>
+                    <strong id="temperature-status" style="color: #fbbf24;">
+                        Aguardando dados...
+                    </strong>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Gráfico -->
+        <div class="chart-container">
+            <div class="chart-header">
+                <span class="chart-title">
+                    Histórico de Medições do Banco de Dados
+                </span>
+            </div>
+
+            <canvas id="weatherChart" height="90"></canvas>
+        </div>
+
+        <!-- Rodapé -->
+        <footer>
+            <div class="footer-content">
+                <p class="institution">© Universidade Paulista - Limeira</p>
+
+                <p class="authors-title">Desenvolvido por:</p>
+
+                <ul class="authors-list">
+                    <li>Letícia Grazyeli</li>
+                    <li>Letícia Francine</li>
+                    <li>Isabela Alves</li>
+                    <li>Marianna Santin</li>
+                    <li>Gabriela Ferreira</li>
+                </ul>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

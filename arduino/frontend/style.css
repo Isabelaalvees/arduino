@@ -1,0 +1,206 @@
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #0b1329;
+      color: #f8fafc;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 950px;
+      width: 100%;
+    }
+
+    /* Top Bar / Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(30, 41, 59, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1.2rem 1.8rem;
+      border-radius: 16px;
+      margin-bottom: 1.5rem;
+    }
+
+    .brand h1 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .brand p {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: #94a3b8;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #64748b;
+      transition: background-color 0.3s;
+    }
+
+    .dot.online { background-color: #10b981; box-shadow: 0 0 10px #10b981; }
+    .dot.offline { background-color: #ef4444; box-shadow: 0 0 10px #ef4444; }
+
+    /* Cards Grid */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card {
+      background: rgba(30, 41, 59, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+    }
+
+    .card-rain::before { background: linear-gradient(90deg, #0284c7, #38bdf8); }
+    .card-pressure::before { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
+    .card-temperature::before {
+      background: linear-gradient(90deg, #d97706, #fbbf24);
+    }
+
+
+    .card-title {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    .metric-value {
+      font-size: 2.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+    }
+
+    .metric-unit {
+      font-size: 1rem;
+      color: #64748b;
+      font-weight: 400;
+    }
+
+    .sub-text {
+      font-size: 0.8rem;
+      margin-top: 0.75rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Chart Section */
+    .chart-container {
+      background: rgba(30, 41, 59, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      padding: 1.5rem;
+    }
+
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .chart-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    /* Rodapé de Créditos */
+    footer {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: rgba(30, 41, 59, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    .institution {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #38bdf8;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .authors-title {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .authors-list {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.2rem;
+      padding: 0;
+    }
+
+    .authors-list li {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+    }
+
+    .authors-list li:not(:last-child)::after {
+      content: '•';
+      color: #a78bfa;
+      margin-left: 1.2rem;
+    }
