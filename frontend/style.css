@@ -97,6 +97,10 @@
 
     .card-rain::before { background: linear-gradient(90deg, #0284c7, #38bdf8); }
     .card-pressure::before { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
+    .card-temperature::before {
+      background: linear-gradient(90deg, #d97706, #fbbf24);
+    }
+
 
     .card-title {
       font-size: 0.85rem;

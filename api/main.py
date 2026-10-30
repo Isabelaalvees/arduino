@@ -13,7 +13,9 @@ app.add_middleware(
         "http://localhost:5500",
         "http://127.0.0.1:5500",
         "http://localhost:5501",
-        "http://127.0.0.1:5501"
+        "http://127.0.0.1:5501",
+        "http://localhost:8080",
+        "http://127.0.0.1:8080"
     ],
     allow_credentials=False,
     allow_methods=["GET", "POST"],
@@ -47,6 +49,8 @@ class DadosAtmosfera(BaseModel):
 class DadosNivelAgua(BaseModel):
     nivel_agua: float
 
+class DadosTemperatura(BaseModel):
+    temperatura: float
 
 # ==========================================
 # ROTA INICIAL
@@ -233,6 +237,65 @@ def buscar_nivel_agua():
             "id": registro[0],
             "data": registro[1],
             "nivel_agua": registro[2]
+        })
+
+    return dados
+
+# ==========================================
+# POST - SALVAR DADOS DE TEMPERATURA
+# ==========================================
+
+@app.post("/temperatura")
+def salvar_temperatura(dados: DadosTemperatura):
+
+    conexao = conectar_banco()
+    cursor = conexao.cursor()
+
+    sql = """
+        INSERT INTO temperatura (temperatura)
+        VALUES (%s);
+    """
+
+    cursor.execute(sql, (dados.temperatura,))
+
+    conexao.commit()
+
+    cursor.close()
+    conexao.close()
+
+    return {
+        "mensagem": "Temperatura salva com sucesso!"
+    }
+
+@app.get("/temperatura")
+def buscar_temperatura():
+
+    conexao = conectar_banco()
+    cursor = conexao.cursor()
+
+    sql = """
+        SELECT
+            id,
+            data,
+            temperatura
+        FROM temperatura
+        ORDER BY data DESC;
+    """
+
+    cursor.execute(sql)
+
+    registros = cursor.fetchall()
+
+    cursor.close()
+    conexao.close()
+
+    dados = []
+
+    for registro in registros:
+        dados.append({
+            "id": registro[0],
+            "data": registro[1],
+            "temperatura": registro[2]
         })
 
     return dados
